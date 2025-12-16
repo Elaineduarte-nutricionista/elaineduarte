@@ -5,211 +5,265 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Acompanhamento Nutricional | Elaine Duarte</title>
 
-  <!-- Fonte -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #ffffff;
-      --text: #1f2933;
-      --muted: #6b7280;
-      --primary: #1f7a6d; /* pode ajustar depois */
-      --whatsapp: #25d366;
+      --bg-light: #f8f9f7;
+      --bg-white: #ffffff;
+      --primary: #6b8f71; /* verde oliva sofisticado */
+      --secondary: #e9ede8;
+      --text-main: #1f2933;
+      --text-muted: #5f6c72;
+      --accent: #25d366;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Inter', sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
+      color: var(--text-main);
+      background: var(--bg-white);
       line-height: 1.6;
     }
 
     section {
-      padding: 80px 20px;
-      max-width: 980px;
+      padding: 90px 24px;
+    }
+
+    .container {
+      max-width: 1100px;
       margin: 0 auto;
     }
 
-    h1, h2 {
-      font-weight: 500;
-      letter-spacing: -0.5px;
-    }
-
     h1 {
-      font-size: 2.2rem;
-      margin-bottom: 20px;
+      font-size: 2.6rem;
+      font-weight: 500;
+      max-width: 720px;
+      line-height: 1.2;
+      margin-bottom: 24px;
     }
 
     h2 {
-      font-size: 1.6rem;
-      margin-bottom: 20px;
+      font-size: 1.8rem;
+      font-weight: 500;
+      margin-bottom: 40px;
     }
 
     p {
-      font-size: 1rem;
-      color: var(--muted);
-      margin-bottom: 16px;
+      font-size: 1.05rem;
+      color: var(--text-muted);
     }
 
-    /* Hero */
+    /* HERO */
     .hero {
-      padding-top: 120px;
-      padding-bottom: 120px;
+      background: var(--bg-light);
     }
 
     .hero p {
-      max-width: 640px;
+      max-width: 620px;
+      margin-bottom: 36px;
     }
 
-    /* Botões */
     .btn {
       display: inline-block;
-      margin-top: 24px;
-      padding: 14px 26px;
-      border-radius: 40px;
-      text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 500;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .btn-primary {
-      background-color: var(--primary);
+      padding: 16px 34px;
+      border-radius: 50px;
+      background: var(--primary);
       color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.25s ease;
     }
 
     .btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.12);
     }
 
-    /* Listas */
-    ul {
-      list-style: none;
-      padding-left: 0;
+    /* BLOCO FRASE */
+    .statement {
+      background: var(--bg-white);
+      text-align: center;
     }
 
-    ul li {
-      margin-bottom: 10px;
-      color: var(--muted);
+    .statement p {
+      font-size: 1.5rem;
+      font-weight: 400;
+      max-width: 760px;
+      margin: 0 auto;
+      color: var(--text-main);
     }
 
-    /* Redes */
+    /* CARDS */
+    .cards {
+      background: var(--secondary);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 28px;
+    }
+
+    .card {
+      background: var(--bg-white);
+      padding: 36px 28px;
+      border-radius: 18px;
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+    }
+
+    /* PARA QUEM */
+    .list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .list div {
+      padding: 22px 0;
+      font-size: 1rem;
+      color: var(--text-muted);
+    }
+
+    /* SOCIAL */
     .social a {
-      display: inline-block;
-      margin-right: 20px;
+      margin-right: 24px;
+      font-weight: 500;
       text-decoration: none;
       color: var(--primary);
-      font-weight: 500;
     }
 
-    /* WhatsApp fixo */
-    .whatsapp-fixo {
+    /* CTA FINAL */
+    .cta {
+      background: var(--bg-light);
+      text-align: center;
+    }
+
+    .cta h2 {
+      max-width: 680px;
+      margin: 0 auto 32px;
+    }
+
+    /* WHATSAPP FIXO */
+    .whatsapp {
       position: fixed;
-      bottom: 24px;
-      right: 24px;
-      background-color: var(--whatsapp);
+      bottom: 26px;
+      right: 26px;
+      background: var(--accent);
       color: #fff;
-      padding: 14px 20px;
+      padding: 14px 22px;
       border-radius: 40px;
-      text-decoration: none;
       font-size: 0.9rem;
       font-weight: 500;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      text-decoration: none;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.18);
       z-index: 1000;
     }
 
-    /* Footer */
     footer {
-      padding: 40px 20px;
+      padding: 50px 20px;
       text-align: center;
       font-size: 0.85rem;
-      color: var(--muted);
+      color: var(--text-muted);
     }
 
     @media (max-width: 600px) {
-      h1 { font-size: 1.8rem; }
-      h2 { font-size: 1.4rem; }
-      section { padding: 60px 20px; }
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.5rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HERO -->
   <section class="hero">
-    <h1>Acompanhamento nutricional baseado em ciência, comportamento alimentar e vida real.</h1>
-    <p>
-      Um acompanhamento individualizado que considera saúde metabólica, emagrecimento sustentável e a relação com a comida — respeitando rotina, contexto e também as demandas de quem pratica atividade física, como a corrida.
-    </p>
-    <a href="#agendamento" class="btn btn-primary">Agendar consulta</a>
+    <div class="container">
+      <h1>Nutrição baseada em ciência, comportamento alimentar e vida real.</h1>
+      <p>
+        Um acompanhamento que considera saúde metabólica, emagrecimento sustentável e a relação com a comida — respeitando rotina, contexto e também as demandas de quem pratica atividade física, como a corrida.
+      </p>
+      <a href="#agendamento" class="btn">Agendar consulta</a>
+    </div>
   </section>
 
-  <!-- COMO FUNCIONA -->
+  <section class="statement">
+    <div class="container">
+      <p>
+        Não é sobre seguir uma dieta perfeita. <br />
+        É sobre construir uma relação mais consciente, possível e sustentável com a comida.
+      </p>
+    </div>
+  </section>
+
+  <section class="cards">
+    <div class="container">
+      <h2>Como funciona o acompanhamento</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Avaliação individual</h3>
+          <p>História clínica, rotina, objetivos e a forma como você se relaciona com a comida.</p>
+        </div>
+        <div class="card">
+          <h3>Estratégias possíveis</h3>
+          <p>Condutas alinhadas à sua realidade, sem rigidez excessiva ou soluções prontas.</p>
+        </div>
+        <div class="card">
+          <h3>Acompanhamento contínuo</h3>
+          <p>Ajustes progressivos conforme evolução, exames, rotina e fase de vida.</p>
+        </div>
+        <div class="card">
+          <h3>Autonomia alimentar</h3>
+          <p>Educação nutricional para decisões mais conscientes no longo prazo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section>
-    <h2>Como funciona o acompanhamento</h2>
-    <p>
-      O acompanhamento é construído a partir da sua história, da forma como você se relaciona com a comida, da sua rotina e dos seus objetivos.
-    </p>
-    <p>
-      Não se trata apenas do que comer, mas de <strong>como, quando e por que se come</strong>, considerando aspectos metabólicos, comportamentais e emocionais envolvidos no processo.
-    </p>
-    <p>
-      Ao longo do acompanhamento, as estratégias são ajustadas de forma contínua, buscando autonomia alimentar, consistência e resultados possíveis de manter no longo prazo.
-    </p>
+    <div class="container">
+      <h2>Para quem é</h2>
+      <div class="list">
+        <div>Adultos que desejam melhorar a saúde metabólica</div>
+        <div>Pessoas que querem emagrecer sem ciclos de restrição</div>
+        <div>Mulheres que praticam corrida e querem alinhar treino e alimentação</div>
+        <div>Pessoas que percebem que o comportamento alimentar impacta seus resultados</div>
+      </div>
+    </div>
   </section>
 
-  <!-- PARA QUEM -->
-  <section>
-    <h2>Para quem é</h2>
-    <ul>
-      <li>• Adultos que desejam melhorar a saúde metabólica</li>
-      <li>• Pessoas que querem emagrecer sem ciclos de restrição e compensação</li>
-      <li>• Mulheres que praticam corrida e sentem dificuldade em alinhar treino e alimentação</li>
-      <li>• Pessoas que percebem que a relação com a comida impacta seus resultados</li>
-      <li>• Quem busca um acompanhamento técnico, individual e possível de manter</li>
-    </ul>
-  </section>
-
-  <!-- REDES -->
   <section class="social">
-    <h2>Conteúdo e redes sociais</h2>
-    <p>
-      Compartilho conteúdos educativos sobre nutrição, saúde metabólica e comportamento alimentar.
-    </p>
-    <a href="#">Instagram</a>
-    <a href="#">TikTok</a>
+    <div class="container">
+      <h2>Conteúdo e redes sociais</h2>
+      <p>Compartilho conteúdos sobre nutrição, comportamento alimentar e saúde metabólica.</p>
+      <br />
+      <a href="#">Instagram</a>
+      <a href="#">TikTok</a>
+    </div>
   </section>
 
-  <!-- AGENDAMENTO -->
-  <section id="agendamento">
-    <h2>Agendamento de consultas</h2>
-    <p>
-      Para agendar sua consulta ou tirar dúvidas sobre o acompanhamento, entre em contato pelo WhatsApp.
-    </p>
-    <a 
-      href="https://wa.me/55SEUNUMERO?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta%20nutricional." 
-      class="btn btn-primary">
-      Agendar pelo WhatsApp
-    </a>
+  <section class="cta" id="agendamento">
+    <div class="container">
+      <h2>Agendamento de consultas</h2>
+      <p>Entre em contato pelo WhatsApp para agendar sua consulta.</p>
+      <br />
+      <a href="https://wa.me/55SEUNUMERO" class="btn">Agendar pelo WhatsApp</a>
+    </div>
   </section>
 
-  <!-- BOTÃO WHATSAPP FIXO -->
-  <a 
-    href="https://wa.me/55SEUNUMERO?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta%20nutricional." 
-    class="whatsapp-fixo">
-    WhatsApp
-  </a>
+  <a href="https://wa.me/55SEUNUMERO" class="whatsapp">WhatsApp</a>
 
-  <!-- FOOTER -->
   <footer>
     © 2025 • Elaine Duarte • Nutrição
   </footer>
