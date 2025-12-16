@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acompanhamento Nutricional | Elaine Duarte</title>
+
+  <!-- Fonte -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #1f2933;
+      --muted: #6b7280;
+      --primary: #1f7a6d; /* pode ajustar depois */
+      --whatsapp: #25d366;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    section {
+      padding: 80px 20px;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    h1, h2 {
+      font-weight: 500;
+      letter-spacing: -0.5px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    /* Hero */
+    .hero {
+      padding-top: 120px;
+      padding-bottom: 120px;
+    }
+
+    .hero p {
+      max-width: 640px;
+    }
+
+    /* Botões */
+    .btn {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 14px 26px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: #fff;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    /* Listas */
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+      color: var(--muted);
+    }
+
+    /* Redes */
+    .social a {
+      display: inline-block;
+      margin-right: 20px;
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 500;
+    }
+
+    /* WhatsApp fixo */
+    .whatsapp-fixo {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background-color: var(--whatsapp);
+      color: #fff;
+      padding: 14px 20px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      z-index: 1000;
+    }
+
+    /* Footer */
+    footer {
+      padding: 40px 20px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 1.8rem; }
+      h2 { font-size: 1.4rem; }
+      section { padding: 60px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Acompanhamento nutricional baseado em ciência e individualidade</h1>
+    <p>
+      Atendimento nutricional focado em saúde metabólica, comportamento alimentar e estratégias sustentáveis para a rotina real.
+    </p>
+    <a href="#agendamento" class="btn btn-primary">Agendar consulta</a>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section>
+    <h2>Como funciona o acompanhamento</h2>
+    <p>
+      O acompanhamento nutricional é estruturado para ir além de planos prontos. As condutas são definidas a partir da avaliação individual, rotina, objetivos e contexto de vida.
+    </p>
+    <p>
+      O processo envolve acompanhamento contínuo, ajustes progressivos e foco em autonomia alimentar.
+    </p>
+  </section>
+
+  <!-- PARA QUEM -->
+  <section>
+    <h2>Para quem é</h2>
+    <ul>
+      <li>• Pessoas que buscam melhorar a saúde metabólica</li>
+      <li>• Quem deseja emagrecer com estratégia e sustentabilidade</li>
+      <li>• Pessoas cansadas de dietas restritivas</li>
+      <li>• Quem valoriza um acompanhamento técnico e individual</li>
+    </ul>
+  </section>
+
+  <!-- REDES -->
+  <section class="social">
+    <h2>Conteúdo e redes sociais</h2>
+    <p>
+      Compartilho conteúdos educativos sobre nutrição, saúde metabólica e comportamento alimentar.
+    </p>
+    <a href="#">Instagram</a>
+    <a href="#">TikTok</a>
+  </section>
+
+  <!-- AGENDAMENTO -->
+  <section id="agendamento">
+    <h2>Agendamento de consultas</h2>
+    <p>
+      Para agendar sua consulta ou tirar dúvidas sobre o acompanhamento, entre em contato pelo WhatsApp.
+    </p>
+    <a 
+      href="https://wa.me/55SEUNUMERO?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta%20nutricional." 
+      class="btn btn-primary">
+      Agendar pelo WhatsApp
+    </a>
+  </section>
+
+  <!-- BOTÃO WHATSAPP FIXO -->
+  <a 
+    href="https://wa.me/55SEUNUMERO?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta%20nutricional." 
+    class="whatsapp-fixo">
+    WhatsApp
+  </a>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2025 • Elaine Duarte • Nutrição
+  </footer>
+
+</body>
+</html>
