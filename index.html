@@ -12,10 +12,10 @@
   <style>
     :root {
       --offwhite: #f5f3ef;
+      --areia: #e6dfd6;
       --verde: #556f64;
       --bordo: #6b2f3a;
       --marrom: #4b3a2f;
-      --areia: #e6dfd6;
       --texto: #1f1f1f;
       --texto-suave: #6b6b6b;
     }
@@ -27,263 +27,196 @@
       background: var(--offwhite);
       color: var(--texto);
       line-height: 1.6;
+      scroll-behavior: smooth;
     }
 
-    section { padding: 120px 24px; position: relative; }
+    section {
+      min-height: 100vh;
+      padding: 140px 24px;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
 
-    .container { max-width: 1180px; margin: 0 auto; }
+    .container { max-width: 1180px; margin: 0 auto; width: 100%; }
 
     h1, h2 {
       font-family: 'Playfair Display', serif;
       font-weight: 400;
     }
 
-    h1 {
-      font-size: 3.2rem;
-      line-height: 1.05;
-      margin-bottom: 32px;
-    }
-
-    h2 {
-      font-size: 2.4rem;
-      margin-bottom: 64px;
-    }
+    h1 { font-size: 3.4rem; line-height: 1.05; margin-bottom: 32px; }
+    h2 { font-size: 2.6rem; margin-bottom: 40px; }
 
     p { font-size: 1.05rem; color: var(--texto-suave); max-width: 520px; }
 
-    /* HERO BRUNO-STYLE */
-    .hero {
-      height: 92vh;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background: #cfcfcf;
-      z-index: 1;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, rgba(0,0,0,0.45), rgba(0,0,0,0.15));
-      z-index: 2;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 3;
-      color: #fff;
-      max-width: 760px;
-    }
-
-    .hero-content h1,
-    .hero-content p { color: #fff; }
-
-    .reveal span {
-      display: inline-block;
-      opacity: 0;
-      transform: translateY(40px);
-      animation: reveal 0.8s forwards;
-    }
-
-    .reveal span:nth-child(n) { animation-delay: calc(var(--i) * 0.05s); }
-
-    @keyframes reveal {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
+    /* BOTÕES */
     .btn {
       display: inline-block;
       margin-top: 48px;
-      padding: 14px 34px;
-      border: 1px solid #fff;
-      color: #fff;
+      padding: 14px 36px;
+      border-radius: 40px;
+      border: 1px solid currentColor;
       text-decoration: none;
       font-size: 0.85rem;
       letter-spacing: 1px;
       transition: all 0.3s ease;
     }
 
-    .btn:hover { background: #fff; color: #000; }
+    .btn.light { color: #fff; }
+    .btn.dark { color: var(--texto); }
 
-    /* BLOCO MANIFESTO */
-    .manifesto {
-      background: var(--areia);
-      text-align: center;
+    .btn.light:hover { background: #fff; color: #000; }
+    .btn.dark:hover { background: var(--texto); color: #fff; }
+
+    /* HERO */
+    .hero {
+      color: #fff;
     }
 
-    .manifesto p {
-      margin: 0 auto;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.7rem;
-      color: var(--marrom);
-      max-width: 760px;
-    }
-
-    /* PUBLICO BLOQUINHOS */
-    .publico { background: var(--offwhite); }
-
-    .publico-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 32px;
-    }
-
-    .publico-box {
-      background: #fff;
-      padding: 42px 36px;
-      border-radius: 18px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .publico-box::after {
-      content: '';
+    .hero-bg {
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, var(--verde), var(--bordo));
-      opacity: 0;
-      transition: 0.4s;
-      z-index: 0;
+      background: #cfcfcf;
+      z-index: -2;
     }
 
-    .publico-box:hover::after { opacity: 1; }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(0,0,0,0.55), rgba(0,0,0,0.2));
+      z-index: -1;
+    }
 
-    .publico-box * { position: relative; z-index: 1; transition: 0.4s; }
+    .hero p { color: #eaeaea; }
 
-    .publico-box:hover h3,
-    .publico-box:hover p { color: #fff; }
+    /* SEÇÃO CLARA */
+    .light { background: var(--offwhite); }
+    .areia { background: var(--areia); }
+    .escura { background: linear-gradient(135deg, var(--bordo), var(--marrom)); color: #fff; }
+    .escura p, .escura h2 { color: #fff; }
 
-    .publico-box h3 {
+    /* PUBLICO */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 36px;
+    }
+
+    .box {
+      background: #fff;
+      padding: 44px 38px;
+      border-radius: 20px;
+      transition: 0.4s;
+    }
+
+    .box:hover {
+      transform: translateY(-6px);
+      background: linear-gradient(135deg, var(--verde), var(--bordo));
+    }
+
+    .box:hover h3, .box:hover p { color: #fff; }
+
+    .box h3 {
       font-family: 'Playfair Display', serif;
       font-size: 1.4rem;
       margin-bottom: 14px;
       color: var(--marrom);
     }
 
-    /* CTA */
-    .cta {
-      background: linear-gradient(135deg, var(--bordo), var(--marrom));
-      color: #fff;
-      text-align: center;
-    }
-
-    .cta h2, .cta p { color: #fff; margin: 0 auto; }
-
     footer {
-      padding: 60px 20px;
+      padding: 80px 20px;
       text-align: center;
       font-size: 0.8rem;
       color: var(--texto-suave);
     }
 
     @media (max-width: 900px) {
-      h1 { font-size: 2.4rem; }
-      h2 { font-size: 1.9rem; }
-      .hero { height: auto; padding: 160px 24px; }
+      h1 { font-size: 2.5rem; }
+      h2 { font-size: 2rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HERO COM FOTO DE FUNDO -->
-  <section class="hero">
-    <div class="hero-bg">FOTO SUA EM TELA CHEIA AQUI</div>
-    <div class="hero-overlay"></div>
-    <div class="container hero-content">
-      <h1 class="reveal">
-        <span style="--i:1">N</span><span style="--i:2">u</span><span style="--i:3">t</span><span style="--i:4">r</span><span style="--i:5">i</span><span style="--i:6">ç</span><span style="--i:7">ã</span><span style="--i:8">o</span>
-        <span style="--i:9"> </span>
-        <span style="--i:10">c</span><span style="--i:11">o</span><span style="--i:12">m</span>
-        <span style="--i:13"> </span>
-        <span style="--i:14">c</span><span style="--i:15">i</span><span style="--i:16">ê</span><span style="--i:17">n</span><span style="--i:18">c</span><span style="--i:19">i</span><span style="--i:20">a</span>,
-        <br />
-        <span style="--i:21">c</span><span style="--i:22">o</span><span style="--i:23">m</span><span style="--i:24">p</span><span style="--i:25">o</span><span style="--i:26">r</span><span style="--i:27">t</span><span style="--i:28">a</span><span style="--i:29">m</span><span style="--i:30">e</span><span style="--i:31">n</span><span style="--i:32">t</span><span style="--i:33">o</span>
-        <span style="--i:34"> </span>
-        <span style="--i:35">e</span>
-        <span style="--i:36"> </span>
-        <span style="--i:37">v</span><span style="--i:38">i</span><span style="--i:39">d</span><span style="--i:40">a</span>
-        <span style="--i:41"> </span>
-        <span style="--i:42">r</span><span style="--i:43">e</span><span style="--i:44">a</span><span style="--i:45">l</span>
-      </h1>
-      <p>Acompanhamento nutricional para saúde metabólica, emagrecimento sustentável e mulheres que correm.</p>
-      <a href="#agendamento" class="btn">AGENDAR CONSULTA</a>
+  <!-- MENU -->
+  <header style="position:fixed; top:0; width:100%; z-index:10; background:rgba(245,243,239,0.85); backdrop-filter: blur(6px);">
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; padding:20px 0;">
+      <strong style="font-family: 'Playfair Display', serif;">Elaine Duarte</strong>
+      <nav style="display:flex; gap:24px; font-size:0.85rem; letter-spacing:1px;">
+        <a href="#metodo">Método</a>
+        <a href="#planos">Planos</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#contato">Contato</a>
+      </nav>
     </div>
-  </section>
+  </header>
 
-  <section class="manifesto">
-    <div class="container">
-      <p>Não é sobre perfeição alimentar. É sobre constância, consciência e escolhas possíveis.</p>
-    </div>
-  </section>
-
-  <section class="publico">
-    <div class="container">
-      <h2>Este acompanhamento é para você que</h2>
-      <div class="publico-grid">
-        <div class="publico-box">
-          <h3>Quer emagrecer sem extremos</h3>
-          <p>Busca resultados reais sem entrar em ciclos de restrição e culpa.</p>
-        </div>
-        <div class="publico-box">
-          <h3>Quer melhorar saúde e exames</h3>
-          <p>Entende que alimentação impacta metabolismo, energia e qualidade de vida.</p>
-        </div>
-        <div class="publico-box">
-          <h3>Corre e sente que algo não encaixa</h3>
-          <p>Treina, mas sente dificuldade em alinhar alimentação, desempenho e recuperação.</p>
-        </div>
-        <div class="publico-box">
-          <h3>Quer melhorar a relação com a comida</h3>
-          <p>Percebe que comportamento alimentar influencia diretamente seus resultados.</p>
-        </div>
+  <!-- HERO -->
+  <section class="hero" style="padding-top:180px;">
+    <div class="hero-bg" style="background:url('SUA-FOTO-AQUI.jpg') center/cover no-repeat;"></div>
+    <div class="hero-overlay" style="background:linear-gradient(90deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.35) 45%, rgba(0,0,0,0.05) 70%);"></div>
+    <div class="container" style="display:grid; grid-template-columns: 1.1fr 0.9fr; align-items:center;">
+      <div>
+        <h1>Alimentação com método.<br>Sem extremismos.</h1>
+        <p>Nutrição baseada em ciência e comportamento alimentar.</p>
+        <a href="https://wa.me/55SEUNUMERO" class="btn light">AGENDAR CONSULTA</a>
       </div>
     </div>
   </section>
 
-  <!-- ACOMPANHE NO INSTAGRAM -->
-  <section style="background: var(--areia);">
-    <div class="container" style="text-align:center;">
-      <h2>Acompanhe no Instagram</h2>
-      <p style="margin: 0 auto 40px;">Conteúdos sobre nutrição, comportamento alimentar, corrida e saúde metabólica.</p>
-      <a href="https://instagram.com/SEUINSTAGRAM" class="btn">@SEUINSTAGRAM</a>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section style="background:#fff;">
+  <!-- MÉTODO -->
+  <section id="metodo" class="areia">
     <div class="container">
-      <h2>Perguntas frequentes</h2>
-      <div class="publico-grid">
-        <div class="publico-box">
-          <h3>As consultas são online?</h3>
-          <p>Sim. Todo o acompanhamento é realizado de forma online, com a mesma qualidade do presencial.</p>
-        </div>
-        <div class="publico-box">
-          <h3>Você trabalha com dieta restritiva?</h3>
-          <p>Não. O foco é comportamento alimentar, saúde metabólica e estratégias possíveis de manter.</p>
-        </div>
-        <div class="publico-box">
-          <h3>Atende homens e mulheres?</h3>
-          <p>Sim. Adultos de ambos os sexos, incluindo praticantes de corrida.</p>
-        </div>
-        <div class="publico-box">
-          <h3>Quanto tempo dura o acompanhamento?</h3>
-          <p>O tempo varia conforme objetivo, resposta clínica e fase de vida.</p>
-        </div>
+      <h2>O método</h2>
+      <p>Um acompanhamento estruturado em pilares claros, sem improviso e sem rigidez desnecessária.</p>
+      <div class="grid" style="margin-top:60px;">
+        <div class="box"><h3>Ciência aplicada</h3><p>Decisões baseadas em evidências, não em modismos.</p></div>
+        <div class="box"><h3>Comportamento alimentar</h3><p>Estratégias para relação saudável com a comida.</p></div>
+        <div class="box"><h3>Individualização</h3><p>Planos que respeitam rotina, fase de vida e objetivos.</p></div>
       </div>
+      <a href="https://wa.me/55SEUNUMERO" class="btn dark">QUERO CONHECER O MÉTODO</a>
     </div>
   </section>
 
-  <section class="cta" id="agendamento">
+  <!-- PARA QUEM -->
+  <section class="light">
     <div class="container">
-      <h2>Agendamento</h2>
-      <p>Para agendar sua consulta, entre em contato pelo WhatsApp.</p>
-      <a href="https://wa.me/55SEUNUMERO" class="btn">WHATSAPP</a>
+      <h2>Para quem é</h2>
+      <div class="grid">
+        <div class="box"><h3>Emagrecimento consciente</h3><p>Sem ciclos de restrição e culpa.</p></div>
+        <div class="box"><h3>Saúde metabólica</h3><p>Foco em exames, energia e longevidade.</p></div>
+        <div class="box"><h3>Mulheres que correm</h3><p>Alinhando alimentação, treino e recuperação.</p></div>
+        <div class="box"><h3>Comportamento alimentar</h3><p>Para quem quer mudar a relação com a comida.</p></div>
+      </div>
+      <a href="https://wa.me/55SEUNUMERO" class="btn dark">AGENDAR AGORA</a>
+    </div>
+  </section>
+
+  <!-- PLANOS -->
+  <section id="planos" class="escura">
+    <div class="container">
+      <h2>Planos de acompanhamento</h2>
+      <p>Estruturas pensadas para diferentes necessidades e níveis de acompanhamento.</p>
+      <a href="https://wa.me/55SEUNUMERO" class="btn light">ENTRAR EM CONTATO</a>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <section id="depoimentos" class="light">
+    <div class="container">
+      <h2>Depoimentos</h2>
+      <p>Espaço reservado para relatos reais de pacientes.</p>
+      <a href="https://wa.me/55SEUNUMERO" class="btn dark">QUERO AGENDAR UM HORÁRIO</a>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" class="areia">
+    <div class="container">
+      <h2>Vamos conversar</h2>
+      <p>Se fizer sentido para você, estou à disposição.</p>
+      <a href="https://wa.me/55SEUNUMERO" class="btn dark">AGENDAR CONSULTA</a>
     </div>
   </section>
 
