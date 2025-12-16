@@ -12,9 +12,10 @@
   <style>
     :root {
       --offwhite: #f5f3ef;
-      --verde: #5c6f64;
-      --bordo: #6a2e35;
+      --verde: #556f64;
+      --bordo: #6b2f3a;
       --marrom: #4b3a2f;
+      --areia: #e6dfd6;
       --texto: #1f1f1f;
       --texto-suave: #6b6b6b;
     }
@@ -28,12 +29,9 @@
       line-height: 1.6;
     }
 
-    section { padding: 110px 24px; }
+    section { padding: 120px 24px; position: relative; }
 
-    .container {
-      max-width: 1120px;
-      margin: 0 auto;
-    }
+    .container { max-width: 1180px; margin: 0 auto; }
 
     h1, h2 {
       font-family: 'Playfair Display', serif;
@@ -41,115 +39,140 @@
     }
 
     h1 {
-      font-size: 3rem;
-      max-width: 720px;
-      line-height: 1.1;
+      font-size: 3.2rem;
+      line-height: 1.05;
       margin-bottom: 32px;
     }
 
     h2 {
-      font-size: 2.2rem;
-      margin-bottom: 48px;
+      font-size: 2.4rem;
+      margin-bottom: 64px;
     }
 
-    p {
-      font-size: 1.05rem;
-      color: var(--texto-suave);
-      max-width: 560px;
-    }
+    p { font-size: 1.05rem; color: var(--texto-suave); max-width: 520px; }
 
-    /* HERO */
+    /* HERO BRUNO-STYLE */
     .hero {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      align-items: center;
-      gap: 60px;
-    }
-
-    .hero-image {
-      width: 100%;
-      height: 520px;
-      background: #ddd;
-      border-radius: 6px;
+      height: 92vh;
       display: flex;
       align-items: center;
-      justify-content: center;
-      color: #888;
-      font-size: 0.9rem;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: #cfcfcf;
+      z-index: 1;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(0,0,0,0.45), rgba(0,0,0,0.15));
+      z-index: 2;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      color: #fff;
+      max-width: 760px;
+    }
+
+    .hero-content h1,
+    .hero-content p { color: #fff; }
+
+    .reveal span {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: reveal 0.8s forwards;
+    }
+
+    .reveal span:nth-child(n) { animation-delay: calc(var(--i) * 0.05s); }
+
+    @keyframes reveal {
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .btn {
       display: inline-block;
-      margin-top: 40px;
-      padding: 14px 32px;
-      border: 1px solid var(--texto);
+      margin-top: 48px;
+      padding: 14px 34px;
+      border: 1px solid #fff;
+      color: #fff;
       text-decoration: none;
-      color: var(--texto);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       letter-spacing: 1px;
       transition: all 0.3s ease;
     }
 
-    .btn:hover {
-      background: var(--texto);
-      color: var(--offwhite);
-    }
+    .btn:hover { background: #fff; color: #000; }
 
-    /* BLOCO FRASE */
-    .frase {
+    /* BLOCO MANIFESTO */
+    .manifesto {
+      background: var(--areia);
       text-align: center;
     }
 
-    .frase p {
+    .manifesto p {
       margin: 0 auto;
-      font-size: 1.6rem;
       font-family: 'Playfair Display', serif;
-      color: var(--texto);
-      max-width: 720px;
+      font-size: 1.7rem;
+      color: var(--marrom);
+      max-width: 760px;
     }
 
-    /* SOBRE */
-    .sobre {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .sobre-image {
-      height: 480px;
-      background: #ddd;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #888;
-      font-size: 0.9rem;
-    }
-
-    /* PARA QUEM */
-    .publico {
-      background: #fff;
-    }
+    /* PUBLICO BLOQUINHOS */
+    .publico { background: var(--offwhite); }
 
     .publico-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 40px;
+      gap: 32px;
     }
 
-    .publico-item h3 {
+    .publico-box {
+      background: #fff;
+      padding: 42px 36px;
+      border-radius: 18px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .publico-box::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--verde), var(--bordo));
+      opacity: 0;
+      transition: 0.4s;
+      z-index: 0;
+    }
+
+    .publico-box:hover::after { opacity: 1; }
+
+    .publico-box * { position: relative; z-index: 1; transition: 0.4s; }
+
+    .publico-box:hover h3,
+    .publico-box:hover p { color: #fff; }
+
+    .publico-box h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
-      margin-bottom: 12px;
+      font-size: 1.4rem;
+      margin-bottom: 14px;
       color: var(--marrom);
     }
 
     /* CTA */
     .cta {
+      background: linear-gradient(135deg, var(--bordo), var(--marrom));
+      color: #fff;
       text-align: center;
-      background: var(--offwhite);
     }
+
+    .cta h2, .cta p { color: #fff; margin: 0 auto; }
 
     footer {
       padding: 60px 20px;
@@ -159,47 +182,42 @@
     }
 
     @media (max-width: 900px) {
-      .hero, .sobre { grid-template-columns: 1fr; }
-      .hero-image, .sobre-image { height: 380px; }
-      h1 { font-size: 2.3rem; }
+      h1 { font-size: 2.4rem; }
+      h2 { font-size: 1.9rem; }
+      .hero { height: auto; padding: 160px 24px; }
     }
   </style>
 </head>
 <body>
 
-  <section>
-    <div class="container hero">
-      <div>
-        <h1>Nutrição, comportamento alimentar e escolhas possíveis.</h1>
-        <p>
-          Acompanhamento nutricional focado em saúde metabólica, emagrecimento sustentável e construção de uma relação mais consciente com a comida.
-        </p>
-        <a href="#agendamento" class="btn">AGENDAR CONSULTA</a>
-      </div>
-      <div class="hero-image">FOTO SUA AQUI</div>
+  <!-- HERO COM FOTO DE FUNDO -->
+  <section class="hero">
+    <div class="hero-bg">FOTO SUA EM TELA CHEIA AQUI</div>
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <h1 class="reveal">
+        <span style="--i:1">N</span><span style="--i:2">u</span><span style="--i:3">t</span><span style="--i:4">r</span><span style="--i:5">i</span><span style="--i:6">ç</span><span style="--i:7">ã</span><span style="--i:8">o</span>
+        <span style="--i:9"> </span>
+        <span style="--i:10">c</span><span style="--i:11">o</span><span style="--i:12">m</span>
+        <span style="--i:13"> </span>
+        <span style="--i:14">c</span><span style="--i:15">i</span><span style="--i:16">ê</span><span style="--i:17">n</span><span style="--i:18">c</span><span style="--i:19">i</span><span style="--i:20">a</span>,
+        <br />
+        <span style="--i:21">c</span><span style="--i:22">o</span><span style="--i:23">m</span><span style="--i:24">p</span><span style="--i:25">o</span><span style="--i:26">r</span><span style="--i:27">t</span><span style="--i:28">a</span><span style="--i:29">m</span><span style="--i:30">e</span><span style="--i:31">n</span><span style="--i:32">t</span><span style="--i:33">o</span>
+        <span style="--i:34"> </span>
+        <span style="--i:35">e</span>
+        <span style="--i:36"> </span>
+        <span style="--i:37">v</span><span style="--i:38">i</span><span style="--i:39">d</span><span style="--i:40">a</span>
+        <span style="--i:41"> </span>
+        <span style="--i:42">r</span><span style="--i:43">e</span><span style="--i:44">a</span><span style="--i:45">l</span>
+      </h1>
+      <p>Acompanhamento nutricional para saúde metabólica, emagrecimento sustentável e mulheres que correm.</p>
+      <a href="#agendamento" class="btn">AGENDAR CONSULTA</a>
     </div>
   </section>
 
-  <section class="frase">
+  <section class="manifesto">
     <div class="container">
-      <p>
-        Comer bem não é sobre perfeição.<br />
-        É sobre consistência, consciência e contexto.
-      </p>
-    </div>
-  </section>
-
-  <section>
-    <div class="container sobre">
-      <div class="sobre-image">FOTO SUA AQUI</div>
-      <div>
-        <h2>Sobre o acompanhamento</h2>
-        <p>
-          Aqui você não vai encontrar dietas prontas ou regras rígidas. O acompanhamento é construído a partir da sua história, rotina, exames, objetivos e da forma como você se relaciona com a comida.
-          <br /><br />
-          A proposta é desenvolver autonomia alimentar, melhorar a saúde metabólica e alcançar resultados que façam sentido no longo prazo.
-        </p>
-      </div>
+      <p>Não é sobre perfeição alimentar. É sobre constância, consciência e escolhas possíveis.</p>
     </div>
   </section>
 
@@ -207,19 +225,19 @@
     <div class="container">
       <h2>Este acompanhamento é para você que</h2>
       <div class="publico-grid">
-        <div class="publico-item">
-          <h3>Quer emagrecer sem restrição extrema</h3>
-          <p>Busca resultados consistentes sem entrar em ciclos de dieta e culpa.</p>
+        <div class="publico-box">
+          <h3>Quer emagrecer sem extremos</h3>
+          <p>Busca resultados reais sem entrar em ciclos de restrição e culpa.</p>
         </div>
-        <div class="publico-item">
+        <div class="publico-box">
           <h3>Quer melhorar saúde e exames</h3>
-          <p>Entende que alimentação impacta energia, metabolismo e qualidade de vida.</p>
+          <p>Entende que alimentação impacta metabolismo, energia e qualidade de vida.</p>
         </div>
-        <div class="publico-item">
-          <h3>Pratica corrida</h3>
-          <p>E sente dificuldade em alinhar alimentação, treino e desempenho.</p>
+        <div class="publico-box">
+          <h3>Corre e sente que algo não encaixa</h3>
+          <p>Treina, mas sente dificuldade em alinhar alimentação, desempenho e recuperação.</p>
         </div>
-        <div class="publico-item">
+        <div class="publico-box">
           <h3>Quer melhorar a relação com a comida</h3>
           <p>Percebe que comportamento alimentar influencia diretamente seus resultados.</p>
         </div>
