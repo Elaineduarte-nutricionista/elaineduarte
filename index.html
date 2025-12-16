@@ -11,27 +11,26 @@
 
   <style>
     :root {
-      --bg-light: #f8f9f7;
-      --bg-white: #ffffff;
-      --primary: #6b8f71; /* verde oliva sofisticado */
-      --secondary: #e9ede8;
-      --text-main: #1f2933;
-      --text-muted: #5f6c72;
-      --accent: #25d366;
+      --offwhite: #f6f4f1;
+      --verde: #4f6f64;       /* verde musgo */
+      --bordo: #6b2f3a;       /* bordô fechado */
+      --marrom: #5a4636;      /* marrom quente */
+      --bege: #e6dfd6;
+      --texto: #2b2b2b;
+      --texto-suave: #5f5f5f;
+      --whatsapp: #25d366;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Inter', sans-serif;
-      color: var(--text-main);
-      background: var(--bg-white);
+      background: var(--offwhite);
+      color: var(--texto);
       line-height: 1.6;
     }
 
-    section {
-      padding: 90px 24px;
-    }
+    section { padding: 100px 24px; }
 
     .container {
       max-width: 1100px;
@@ -41,135 +40,139 @@
     h1 {
       font-size: 2.6rem;
       font-weight: 500;
-      max-width: 720px;
-      line-height: 1.2;
-      margin-bottom: 24px;
+      max-width: 760px;
+      line-height: 1.15;
+      margin-bottom: 28px;
     }
 
     h2 {
-      font-size: 1.8rem;
+      font-size: 1.9rem;
       font-weight: 500;
-      margin-bottom: 40px;
+      margin-bottom: 48px;
     }
 
-    p {
-      font-size: 1.05rem;
-      color: var(--text-muted);
-    }
+    p { font-size: 1.05rem; color: var(--texto-suave); }
 
     /* HERO */
     .hero {
-      background: var(--bg-light);
+      background: linear-gradient(135deg, var(--offwhite), var(--bege));
+      border-bottom-left-radius: 80px;
     }
 
-    .hero p {
-      max-width: 620px;
-      margin-bottom: 36px;
-    }
+    .hero p { max-width: 620px; margin-bottom: 40px; }
 
     .btn {
       display: inline-block;
-      padding: 16px 34px;
-      border-radius: 50px;
-      background: var(--primary);
+      padding: 16px 36px;
+      border-radius: 60px;
+      background: var(--verde);
       color: #fff;
       text-decoration: none;
       font-weight: 500;
-      font-size: 0.95rem;
+      letter-spacing: 0.3px;
       transition: all 0.25s ease;
     }
 
     .btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+      box-shadow: 0 12px 26px rgba(0,0,0,0.18);
     }
 
-    /* BLOCO FRASE */
-    .statement {
-      background: var(--bg-white);
+    /* FRASE MANIFESTO */
+    .manifesto {
+      background: var(--verde);
+      color: #fff;
       text-align: center;
     }
 
-    .statement p {
-      font-size: 1.5rem;
+    .manifesto p {
+      font-size: 1.6rem;
       font-weight: 400;
-      max-width: 760px;
+      max-width: 800px;
       margin: 0 auto;
-      color: var(--text-main);
+      color: #fff;
     }
 
-    /* CARDS */
+    /* METODO */
+    .metodo {
+      background: var(--offwhite);
+    }
+
     .cards {
-      background: var(--secondary);
-    }
-
-    .card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 28px;
+      gap: 32px;
     }
 
     .card {
-      background: var(--bg-white);
-      padding: 36px 28px;
-      border-radius: 18px;
+      background: #fff;
+      padding: 40px 32px;
+      border-radius: 22px;
+      border-top: 4px solid var(--verde);
     }
 
     .card h3 {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 500;
-      margin-bottom: 12px;
-    }
-
-    .card p {
-      font-size: 0.95rem;
+      margin-bottom: 14px;
+      color: var(--marrom);
     }
 
     /* PARA QUEM */
-    .list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+    .publico {
+      background: var(--bege);
+      border-top-right-radius: 80px;
     }
 
-    .list div {
-      padding: 22px 0;
-      font-size: 1rem;
-      color: var(--text-muted);
+    .publico-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+    }
+
+    .publico-item {
+      background: var(--offwhite);
+      padding: 34px 30px;
+      border-radius: 20px;
+      border-left: 4px solid var(--bordo);
+    }
+
+    .publico-item strong {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--bordo);
+      font-weight: 500;
     }
 
     /* SOCIAL */
     .social a {
-      margin-right: 24px;
-      font-weight: 500;
+      margin-right: 26px;
       text-decoration: none;
-      color: var(--primary);
+      font-weight: 500;
+      color: var(--verde);
     }
 
-    /* CTA FINAL */
+    /* CTA */
     .cta {
-      background: var(--bg-light);
+      background: linear-gradient(135deg, var(--bordo), var(--marrom));
+      color: #fff;
       text-align: center;
     }
 
-    .cta h2 {
-      max-width: 680px;
-      margin: 0 auto 32px;
-    }
+    .cta h2, .cta p { color: #fff; }
 
-    /* WHATSAPP FIXO */
+    /* WHATSAPP */
     .whatsapp {
       position: fixed;
-      bottom: 26px;
-      right: 26px;
-      background: var(--accent);
+      bottom: 28px;
+      right: 28px;
+      background: var(--whatsapp);
       color: #fff;
       padding: 14px 22px;
       border-radius: 40px;
-      font-size: 0.9rem;
       font-weight: 500;
       text-decoration: none;
-      box-shadow: 0 10px 26px rgba(0,0,0,0.18);
+      box-shadow: 0 12px 26px rgba(0,0,0,0.2);
       z-index: 1000;
     }
 
@@ -177,7 +180,7 @@
       padding: 50px 20px;
       text-align: center;
       font-size: 0.85rem;
-      color: var(--text-muted);
+      color: var(--texto-suave);
     }
 
     @media (max-width: 600px) {
@@ -192,36 +195,36 @@
     <div class="container">
       <h1>Nutrição baseada em ciência, comportamento alimentar e vida real.</h1>
       <p>
-        Um acompanhamento que considera saúde metabólica, emagrecimento sustentável e a relação com a comida — respeitando rotina, contexto e também as demandas de quem pratica atividade física, como a corrida.
+        Um acompanhamento que integra saúde metabólica, emagrecimento sustentável e a forma como você se relaciona com a comida — respeitando rotina, contexto e também as demandas de quem pratica atividade física, como a corrida.
       </p>
       <a href="#agendamento" class="btn">Agendar consulta</a>
     </div>
   </section>
 
-  <section class="statement">
+  <section class="manifesto">
     <div class="container">
       <p>
-        Não é sobre seguir uma dieta perfeita. <br />
+        Não é sobre seguir uma dieta perfeita.<br />
         É sobre construir uma relação mais consciente, possível e sustentável com a comida.
       </p>
     </div>
   </section>
 
-  <section class="cards">
+  <section class="metodo">
     <div class="container">
       <h2>Como funciona o acompanhamento</h2>
-      <div class="card-grid">
+      <div class="cards">
         <div class="card">
-          <h3>Avaliação individual</h3>
-          <p>História clínica, rotina, objetivos e a forma como você se relaciona com a comida.</p>
+          <h3>Avaliação completa</h3>
+          <p>História clínica, rotina, exames, objetivos e comportamento alimentar.</p>
         </div>
         <div class="card">
-          <h3>Estratégias possíveis</h3>
-          <p>Condutas alinhadas à sua realidade, sem rigidez excessiva ou soluções prontas.</p>
+          <h3>Estratégias individualizadas</h3>
+          <p>Condutas possíveis de manter, sem rigidez excessiva ou soluções genéricas.</p>
         </div>
         <div class="card">
           <h3>Acompanhamento contínuo</h3>
-          <p>Ajustes progressivos conforme evolução, exames, rotina e fase de vida.</p>
+          <p>Ajustes progressivos conforme resposta clínica, rotina e fase de vida.</p>
         </div>
         <div class="card">
           <h3>Autonomia alimentar</h3>
@@ -231,14 +234,26 @@
     </div>
   </section>
 
-  <section>
+  <section class="publico">
     <div class="container">
-      <h2>Para quem é</h2>
-      <div class="list">
-        <div>Adultos que desejam melhorar a saúde metabólica</div>
-        <div>Pessoas que querem emagrecer sem ciclos de restrição</div>
-        <div>Mulheres que praticam corrida e querem alinhar treino e alimentação</div>
-        <div>Pessoas que percebem que o comportamento alimentar impacta seus resultados</div>
+      <h2>Para quem este acompanhamento é</h2>
+      <div class="publico-grid">
+        <div class="publico-item">
+          <strong>Saúde metabólica</strong>
+          Adultos que desejam melhorar exames, energia, disposição e relação com a comida.
+        </div>
+        <div class="publico-item">
+          <strong>Emagrecimento sustentável</strong>
+          Pessoas cansadas de dietas restritivas e ciclos de efeito sanfona.
+        </div>
+        <div class="publico-item">
+          <strong>Mulheres que correm</strong>
+          Quem pratica corrida e sente dificuldade em alinhar treino, alimentação e resultados.
+        </div>
+        <div class="publico-item">
+          <strong>Comportamento alimentar</strong>
+          Pessoas que percebem que a forma como comem impacta diretamente seus resultados.
+        </div>
       </div>
     </div>
   </section>
@@ -246,7 +261,7 @@
   <section class="social">
     <div class="container">
       <h2>Conteúdo e redes sociais</h2>
-      <p>Compartilho conteúdos sobre nutrição, comportamento alimentar e saúde metabólica.</p>
+      <p>Compartilho reflexões e conteúdos sobre nutrição, comportamento alimentar e saúde metabólica.</p>
       <br />
       <a href="#">Instagram</a>
       <a href="#">TikTok</a>
@@ -256,7 +271,7 @@
   <section class="cta" id="agendamento">
     <div class="container">
       <h2>Agendamento de consultas</h2>
-      <p>Entre em contato pelo WhatsApp para agendar sua consulta.</p>
+      <p>Para agendar sua consulta, entre em contato diretamente pelo WhatsApp.</p>
       <br />
       <a href="https://wa.me/55SEUNUMERO" class="btn">Agendar pelo WhatsApp</a>
     </div>
