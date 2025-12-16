@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Elaine Duarte • Nutrição</title>
 
-  <!-- Fonte semelhante à do Bruno Cadena -->
+  <!-- Fonte (mesma família usada pelo Bruno Cadena) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -29,49 +29,53 @@
       font-family: 'Poppins', sans-serif;
       background: var(--offwhite);
       color: var(--marrom);
+      line-height: 1.6;
     }
 
-    /* ANIMAÇÕES */
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+    /* ================= HERO (IMAGEM FIXA + CONTEÚDO SOBREPOSTO) ================= */
 
-    .animar {
-      animation: fadeUp 1s ease forwards;
-    }
-
-    /* HERO */
     .hero {
-      min-height: 100vh;
-      background:
-        linear-gradient(rgba(55,45,35,0.35), rgba(55,45,35,0.35)),
-        url('foto-elaine.jpg') top center/cover no-repeat;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 40px 70px;
-      color: var(--offwhite);
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .hero-img {
+      position: fixed; /* mantém a imagem parada */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      object-fit: cover;
+      object-position: center 15%; /* PRIORIZA O ROSTO */
+      z-index: -2;
+    }
+
+    .hero-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(55,45,35,0.35);
+      z-index: -1;
     }
 
     nav {
+      position: relative;
+      z-index: 2;
       display: flex;
       gap: 36px;
+      padding: 40px 70px;
     }
 
     nav a {
-      color: var(--offwhite);
+      color: #fff;
       text-decoration: none;
       font-size: 14px;
-      font-weight: 400;
       letter-spacing: 0.12em;
       text-transform: uppercase;
+      font-weight: 400;
     }
 
     nav a:hover {
@@ -79,30 +83,32 @@
     }
 
     .hero-texto {
-      max-width: 640px;
-      margin-bottom: 90px;
+      position: absolute;
+      bottom: 120px;
+      left: 70px;
+      max-width: 620px;
+      color: #fff;
+      z-index: 2;
     }
 
     .hero-texto h1 {
       font-size: 52px;
+      font-weight: 500;
       line-height: 1.15;
       margin-bottom: 22px;
-      font-weight: 500;
     }
 
     .hero-texto p {
       font-size: 18px;
-      margin-bottom: 34px;
       font-weight: 300;
+      margin-bottom: 34px;
     }
 
     .btn-whatsapp {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
+      display: inline-block;
       background: var(--whatsapp);
       color: white;
-      padding: 15px 32px;
+      padding: 15px 34px;
       border-radius: 40px;
       text-decoration: none;
       font-weight: 500;
@@ -111,7 +117,19 @@
 
     .btn-whatsapp:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+    }
+
+    /* ================= CONTEÚDO SOBREPOSTO ================= */
+
+    .conteudo {
+      position: relative;
+      z-index: 3;
+      background: var(--offwhite);
+      margin-top: 100vh; /* COMEÇA DEPOIS DA FOTO */
+      border-top-left-radius: 40px;
+      border-top-right-radius: 40px;
+      box-shadow: 0 -20px 40px rgba(0,0,0,0.08);
     }
 
     section {
@@ -136,7 +154,6 @@
       padding: 42px 38px;
       border-radius: 22px;
       font-weight: 300;
-      animation: fadeUp 1s ease forwards;
     }
 
     .cta {
@@ -155,9 +172,16 @@
       font-weight: 500;
     }
 
+    /* RESPONSIVO */
     @media (max-width: 768px) {
-      .hero {
+      nav {
         padding: 30px;
+      }
+
+      .hero-texto {
+        left: 30px;
+        right: 30px;
+        bottom: 80px;
       }
 
       .hero-texto h1 {
@@ -172,58 +196,67 @@
 </head>
 <body>
 
+  <!-- HERO -->
   <header class="hero">
-    <nav class="animar">
+    <img src="foto-elaine.jpg" alt="Elaine Duarte" class="hero-img">
+    <div class="hero-overlay"></div>
+
+    <nav>
       <a href="#metodo">Método</a>
       <a href="#planos">Planos</a>
       <a href="#depoimentos">Depoimentos</a>
       <a href="#contato">Contato</a>
     </nav>
 
-    <div class="hero-texto animar">
+    <div class="hero-texto">
       <h1>Nutrição com consciência,<br>presença e autonomia</h1>
       <p>Acompanhamento nutricional com foco em comportamento alimentar, saúde real e escolhas possíveis.</p>
       <a class="btn-whatsapp" href="https://wa.me/SEUNUMERO">Agendar consulta pelo WhatsApp</a>
     </div>
   </header>
 
-  <section id="metodo" class="animar">
-    <h2 class="titulo">Meu método</h2>
-    <p>Um acompanhamento que respeita sua história, seu corpo e sua rotina — sem dietas restritivas ou promessas irreais.</p>
-    <div class="cta">
-      <a class="btn-whatsapp" href="https://wa.me/SEUNUMERO">Entrar em contato</a>
-    </div>
-  </section>
+  <!-- CONTEÚDO SOBREPOSTO -->
+  <main class="conteudo">
 
-  <section id="planos" class="animar">
-    <h2 class="titulo">Este acompanhamento é para você que:</h2>
-    <div class="cards">
-      <div class="card">Quer melhorar sua relação com a comida</div>
-      <div class="card">Busca saúde sem extremismos</div>
-      <div class="card">Corre ou pratica atividade física regularmente</div>
-      <div class="card">Deseja constância e autonomia alimentar</div>
-    </div>
-    <div class="cta">
-      <a class="btn-whatsapp" href="https://wa.me/SEUNUMERO">Quero agendar um horário</a>
-    </div>
-  </section>
+    <section id="metodo">
+      <h2 class="titulo">Meu método</h2>
+      <p>Um acompanhamento que respeita sua história, seu corpo e sua rotina — sem dietas restritivas ou promessas irreais.</p>
+      <div class="cta">
+        <a class="btn-whatsapp" href="https://wa.me/SEUNUMERO">Entrar em contato</a>
+      </div>
+    </section>
 
-  <section id="depoimentos" class="animar">
-    <h2 class="titulo">Depoimentos</h2>
-    <p>(Espaço reservado para depoimentos de pacientes)</p>
-  </section>
+    <section id="planos">
+      <h2 class="titulo">Este acompanhamento é para você que:</h2>
+      <div class="cards">
+        <div class="card">Quer melhorar sua relação com a comida</div>
+        <div class="card">Busca saúde sem extremismos</div>
+        <div class="card">Corre ou pratica atividade física regularmente</div>
+        <div class="card">Deseja constância e autonomia alimentar</div>
+      </div>
+      <div class="cta">
+        <a class="btn-whatsapp" href="https://wa.me/SEUNUMERO">Quero agendar um horário</a>
+      </div>
+    </section>
 
-  <section id="contato" class="animar">
-    <h2 class="titulo">Contato</h2>
-    <p>Atendimentos online e presenciais.</p>
-    <div class="cta">
-      <a class="btn-whatsapp" href="https://wa.me/SEUNUMERO">Falar comigo no WhatsApp</a>
-    </div>
-  </section>
+    <section id="depoimentos">
+      <h2 class="titulo">Depoimentos</h2>
+      <p>(Espaço reservado para depoimentos de pacientes)</p>
+    </section>
 
-  <footer>
-    <p>Acompanhe no <a href="https://instagram.com/SEUINSTAGRAM">Instagram</a></p>
-  </footer>
+    <section id="contato">
+      <h2 class="titulo">Contato</h2>
+      <p>Atendimentos online e presenciais.</p>
+      <div class="cta">
+        <a class="btn-whatsapp" href="https://wa.me/SEUNUMERO">Falar comigo no WhatsApp</a>
+      </div>
+    </section>
+
+    <footer>
+      <p>Acompanhe no <a href="https://instagram.com/SEUINSTAGRAM">Instagram</a></p>
+    </footer>
+
+  </main>
 
 </body>
 </html>
