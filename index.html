@@ -5,17 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Elaine Duarte • Nutrição</title>
 
-  <!-- Fonte (mesma família usada pelo Bruno Cadena) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Fonte (mesma família visual do Bruno Cadena) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bege: #f3efe9;
-      --marrom: #3f3328;
-      --verde: #6b7a4a;
-      --offwhite: #faf9f7;
+      --bege: #f5f1ea;
+      --marrom: #3b2f2f;
+      --musgo: #4b5d52;
       --whatsapp: #25D366;
     }
 
@@ -23,240 +20,202 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
     }
 
     body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--offwhite);
+      background: var(--bege);
       color: var(--marrom);
-      line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    /* ================= HERO (IMAGEM FIXA + CONTEÚDO SOBREPOSTO) ================= */
-
+    /* HERO */
     .hero {
-      position: relative;
-      height: 100vh;
+      position: fixed;
+      inset: 0;
+      z-index: -1;
       overflow: hidden;
     }
 
-    .hero-img {
-      position: fixed; /* mantém a imagem parada */
-      top: 0;
-      left: 0;
+    .hero img {
       width: 100%;
-      height: 100vh;
+      height: 100%;
       object-fit: cover;
-      object-position: center 15%; /* PRIORIZA O ROSTO */
-      z-index: -2;
+      object-position: center 30%; /* enquadramento do rosto */
+      filter: brightness(0.9);
+      transform: scale(1.05);
     }
 
     .hero-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background: rgba(55,45,35,0.35);
-      z-index: -1;
-    }
-
-    nav {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      gap: 36px;
-      padding: 40px 70px;
-    }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 14px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-weight: 400;
-    }
-
-    nav a:hover {
-      opacity: 0.7;
-    }
-
-    .hero-texto {
       position: absolute;
-      bottom: 120px;
-      left: 70px;
-      max-width: 620px;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.15));
+    }
+
+    .hero-content {
+      position: absolute;
+      left: 8%;
+      bottom: 22%;
+      max-width: 520px;
       color: #fff;
-      z-index: 2;
+      animation: fadeUp 1.2s ease forwards;
     }
 
-    .hero-texto h1 {
-      font-size: 52px;
-      font-weight: 500;
-      line-height: 1.15;
-      margin-bottom: 22px;
+    .hero-content h1 {
+      font-size: 3rem;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 16px;
     }
 
-    .hero-texto p {
-      font-size: 18px;
+    .hero-content p {
+      font-size: 1.1rem;
       font-weight: 300;
-      margin-bottom: 34px;
+      margin-bottom: 28px;
     }
 
     .btn-whatsapp {
       display: inline-block;
       background: var(--whatsapp);
-      color: white;
-      padding: 15px 34px;
-      border-radius: 40px;
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 999px;
       text-decoration: none;
       font-weight: 500;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: transform .3s ease, box-shadow .3s ease;
     }
 
     .btn-whatsapp:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(37,211,102,0.35);
     }
 
-    /* ================= CONTEÚDO SOBREPOSTO ================= */
-
-    .conteudo {
-      position: relative;
-      z-index: 3;
-      background: var(--offwhite);
-      margin-top: 100vh; /* COMEÇA DEPOIS DA FOTO */
-      border-top-left-radius: 40px;
-      border-top-right-radius: 40px;
-      box-shadow: 0 -20px 40px rgba(0,0,0,0.08);
+    /* CONTEÚDO SOBREPOSTO */
+    main {
+      margin-top: 100vh;
+      background: var(--bege);
+      border-radius: 40px 40px 0 0;
+      padding: 100px 8% 120px;
+      box-shadow: 0 -30px 60px rgba(0,0,0,0.15);
     }
 
     section {
-      padding: 110px 70px;
+      margin-bottom: 100px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all .9s ease;
     }
 
-    .titulo {
-      font-size: 38px;
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section h2 {
+      font-size: 2.2rem;
       font-weight: 500;
-      margin-bottom: 60px;
+      margin-bottom: 32px;
+      color: var(--musgo);
     }
 
-    /* CARDS */
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 32px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
     }
 
     .card {
-      background: var(--bege);
-      padding: 42px 38px;
+      background: #fff;
+      padding: 32px;
       border-radius: 22px;
-      font-weight: 300;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+      transition: transform .4s ease;
     }
 
-    .cta {
-      margin-top: 50px;
+    .card:hover {
+      transform: translateY(-6px);
     }
 
-    footer {
-      background: var(--bege);
-      padding: 70px;
-      text-align: center;
-    }
-
-    footer a {
+    .card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 12px;
       color: var(--marrom);
-      text-decoration: none;
-      font-weight: 500;
     }
 
-    /* RESPONSIVO */
+    .card p {
+      font-size: .95rem;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    /* ANIMAÇÃO */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     @media (max-width: 768px) {
-      nav {
-        padding: 30px;
-      }
-
-      .hero-texto {
-        left: 30px;
-        right: 30px;
-        bottom: 80px;
-      }
-
-      .hero-texto h1 {
-        font-size: 38px;
-      }
-
-      section {
-        padding: 80px 30px;
-      }
+      .hero-content h1 { font-size: 2.2rem; }
+      .hero-content { left: 6%; right: 6%; }
+      main { padding: 80px 6%; }
     }
   </style>
 </head>
 <body>
 
   <!-- HERO -->
-  <header class="hero">
-    <img src="foto-elaine.jpg" alt="Elaine Duarte" class="hero-img">
+  <div class="hero">
+    <img src="foto-elaine.jpg" alt="Elaine Duarte" />
     <div class="hero-overlay"></div>
-
-    <nav>
-      <a href="#metodo">Método</a>
-      <a href="#planos">Planos</a>
-      <a href="#depoimentos">Depoimentos</a>
-      <a href="#contato">Contato</a>
-    </nav>
-
-    <div class="hero-texto">
+    <div class="hero-content">
       <h1>Nutrição com consciência,<br>presença e autonomia</h1>
       <p>Acompanhamento nutricional com foco em comportamento alimentar, saúde real e escolhas possíveis.</p>
-      <a class="btn-whatsapp" href="https://wa.me/SEUNUMERO">Agendar consulta pelo WhatsApp</a>
+      <a class="btn-whatsapp" href="https://wa.me/55SEUNUMEROAQUI" target="_blank">Agendar consulta pelo WhatsApp</a>
     </div>
-  </header>
+  </div>
 
-  <!-- CONTEÚDO SOBREPOSTO -->
-  <main class="conteudo">
-
-    <section id="metodo">
-      <h2 class="titulo">Meu método</h2>
-      <p>Um acompanhamento que respeita sua história, seu corpo e sua rotina — sem dietas restritivas ou promessas irreais.</p>
-      <div class="cta">
-        <a class="btn-whatsapp" href="https://wa.me/SEUNUMERO">Entrar em contato</a>
-      </div>
-    </section>
-
-    <section id="planos">
-      <h2 class="titulo">Este acompanhamento é para você que:</h2>
+  <!-- CONTEÚDO -->
+  <main>
+    <section>
+      <h2>Este acompanhamento é para você que</h2>
       <div class="cards">
-        <div class="card">Quer melhorar sua relação com a comida</div>
-        <div class="card">Busca saúde sem extremismos</div>
-        <div class="card">Corre ou pratica atividade física regularmente</div>
-        <div class="card">Deseja constância e autonomia alimentar</div>
-      </div>
-      <div class="cta">
-        <a class="btn-whatsapp" href="https://wa.me/SEUNUMERO">Quero agendar um horário</a>
-      </div>
-    </section>
-
-    <section id="depoimentos">
-      <h2 class="titulo">Depoimentos</h2>
-      <p>(Espaço reservado para depoimentos de pacientes)</p>
-    </section>
-
-    <section id="contato">
-      <h2 class="titulo">Contato</h2>
-      <p>Atendimentos online e presenciais.</p>
-      <div class="cta">
-        <a class="btn-whatsapp" href="https://wa.me/SEUNUMERO">Falar comigo no WhatsApp</a>
+        <div class="card">
+          <h3>Quer autonomia alimentar</h3>
+          <p>Sem regras extremas, terrorismo nutricional ou culpa constante.</p>
+        </div>
+        <div class="card">
+          <h3>Busca saúde sustentável</h3>
+          <p>Comportamentos possíveis, respeitando rotina, corpo e contexto.</p>
+        </div>
+        <div class="card">
+          <h3>Já tentou de tudo</h3>
+          <p>E está cansada de ciclos de restrição, compensação e frustração.</p>
+        </div>
       </div>
     </section>
-
-    <footer>
-      <p>Acompanhe no <a href="https://instagram.com/SEUINSTAGRAM">Instagram</a></p>
-    </footer>
-
   </main>
+
+  <script>
+    const sections = document.querySelectorAll('section');
+
+    const reveal = () => {
+      sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < window.innerHeight * 0.85) {
+          sec.classList.add('visible');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', reveal);
+    reveal();
+  </script>
 
 </body>
 </html>
