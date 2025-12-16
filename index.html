@@ -5,16 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Elaine Duarte • Nutrição</title>
 
+  <!-- Fonte semelhante à do Bruno Cadena -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bege: #f4f1ec;
-      --marrom: #4b3a2f;
+      --bege: #f3efe9;
+      --marrom: #3f3328;
       --verde: #6b7a4a;
       --offwhite: #faf9f7;
+      --whatsapp: #25D366;
     }
 
     * {
@@ -24,107 +26,140 @@
     }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Poppins', sans-serif;
       background: var(--offwhite);
       color: var(--marrom);
+    }
+
+    /* ANIMAÇÕES */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animar {
+      animation: fadeUp 1s ease forwards;
     }
 
     /* HERO */
     .hero {
       min-height: 100vh;
       background:
-        linear-gradient(rgba(60,50,40,0.45), rgba(60,50,40,0.45)),
-        url('foto-elaine.jpg') center/cover no-repeat;
+        linear-gradient(rgba(55,45,35,0.35), rgba(55,45,35,0.35)),
+        url('foto-elaine.jpg') top center/cover no-repeat;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 40px 60px;
+      padding: 40px 70px;
       color: var(--offwhite);
     }
 
     nav {
       display: flex;
-      gap: 32px;
+      gap: 36px;
     }
 
     nav a {
       color: var(--offwhite);
       text-decoration: none;
       font-size: 14px;
-      letter-spacing: 0.1em;
+      font-weight: 400;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
     }
 
     nav a:hover {
-      color: #d8d4cc;
+      opacity: 0.7;
     }
 
     .hero-texto {
-      max-width: 620px;
-      margin-bottom: 80px;
+      max-width: 640px;
+      margin-bottom: 90px;
     }
 
     .hero-texto h1 {
-      font-family: 'Playfair Display', serif;
       font-size: 52px;
-      line-height: 1.1;
-      margin-bottom: 24px;
+      line-height: 1.15;
+      margin-bottom: 22px;
+      font-weight: 500;
     }
 
     .hero-texto p {
       font-size: 18px;
-      margin-bottom: 36px;
+      margin-bottom: 34px;
+      font-weight: 300;
     }
 
-    .btn {
-      display: inline-block;
-      background: var(--verde);
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--whatsapp);
       color: white;
-      padding: 14px 30px;
+      padding: 15px 32px;
+      border-radius: 40px;
       text-decoration: none;
       font-weight: 500;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    /* SECTIONS */
+    .btn-whatsapp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
     section {
-      padding: 100px 60px;
+      padding: 110px 70px;
     }
 
     .titulo {
-      font-family: 'Playfair Display', serif;
-      font-size: 40px;
-      margin-bottom: 50px;
+      font-size: 38px;
+      font-weight: 500;
+      margin-bottom: 60px;
     }
 
-    /* PRA QUEM É */
+    /* CARDS */
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 32px;
     }
 
     .card {
       background: var(--bege);
-      padding: 40px;
+      padding: 42px 38px;
+      border-radius: 22px;
+      font-weight: 300;
+      animation: fadeUp 1s ease forwards;
     }
 
-    /* BOTÕES VARIADOS */
     .cta {
-      margin-top: 40px;
+      margin-top: 50px;
     }
 
     footer {
       background: var(--bege);
-      padding: 60px;
+      padding: 70px;
       text-align: center;
     }
 
     footer a {
       color: var(--marrom);
       text-decoration: none;
+      font-weight: 500;
     }
 
     @media (max-width: 768px) {
+      .hero {
+        padding: 30px;
+      }
+
       .hero-texto h1 {
         font-size: 38px;
       }
@@ -132,39 +167,35 @@
       section {
         padding: 80px 30px;
       }
-
-      .hero {
-        padding: 30px;
-      }
     }
   </style>
 </head>
 <body>
 
   <header class="hero">
-    <nav>
+    <nav class="animar">
       <a href="#metodo">Método</a>
       <a href="#planos">Planos</a>
       <a href="#depoimentos">Depoimentos</a>
       <a href="#contato">Contato</a>
     </nav>
 
-    <div class="hero-texto">
+    <div class="hero-texto animar">
       <h1>Nutrição com consciência,<br>presença e autonomia</h1>
       <p>Acompanhamento nutricional com foco em comportamento alimentar, saúde real e escolhas possíveis.</p>
-      <a class="btn" href="https://wa.me/SEUNUMERO">Agendar consulta</a>
+      <a class="btn-whatsapp" href="https://wa.me/SEUNUMERO">Agendar consulta pelo WhatsApp</a>
     </div>
   </header>
 
-  <section id="metodo">
+  <section id="metodo" class="animar">
     <h2 class="titulo">Meu método</h2>
     <p>Um acompanhamento que respeita sua história, seu corpo e sua rotina — sem dietas restritivas ou promessas irreais.</p>
     <div class="cta">
-      <a class="btn" href="https://wa.me/SEUNUMERO">Quero entender melhor</a>
+      <a class="btn-whatsapp" href="https://wa.me/SEUNUMERO">Entrar em contato</a>
     </div>
   </section>
 
-  <section id="planos">
+  <section id="planos" class="animar">
     <h2 class="titulo">Este acompanhamento é para você que:</h2>
     <div class="cards">
       <div class="card">Quer melhorar sua relação com a comida</div>
@@ -173,23 +204,20 @@
       <div class="card">Deseja constância e autonomia alimentar</div>
     </div>
     <div class="cta">
-      <a class="btn" href="https://wa.me/SEUNUMERO">Quero agendar um horário</a>
+      <a class="btn-whatsapp" href="https://wa.me/SEUNUMERO">Quero agendar um horário</a>
     </div>
   </section>
 
-  <section id="depoimentos">
+  <section id="depoimentos" class="animar">
     <h2 class="titulo">Depoimentos</h2>
     <p>(Espaço reservado para depoimentos de pacientes)</p>
-    <div class="cta">
-      <a class="btn" href="https://wa.me/SEUNUMERO">Entrar em contato</a>
-    </div>
   </section>
 
-  <section id="contato">
+  <section id="contato" class="animar">
     <h2 class="titulo">Contato</h2>
     <p>Atendimentos online e presenciais.</p>
     <div class="cta">
-      <a class="btn" href="https://wa.me/SEUNUMERO">Agendar consulta</a>
+      <a class="btn-whatsapp" href="https://wa.me/SEUNUMERO">Falar comigo no WhatsApp</a>
     </div>
   </section>
 
