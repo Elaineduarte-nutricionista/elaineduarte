@@ -10,7 +10,60 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
-    :root {
+.hero {
+  height: 100vh;
+  background: 
+    linear-gradient(
+      rgba(60, 50, 40, 0.45),
+      rgba(60, 50, 40, 0.45)
+    ),
+    url('foto-elaine.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 60px;
+  color: #f5f3ee;
+}
+.menu {
+  display: flex;
+  gap: 30px;
+}
+
+.menu a {
+  color: #f5f3ee;
+  text-decoration: none;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.menu a:hover {
+  color: #c7c2b8;
+}
+ .hero-texto {
+  max-width: 600px;
+}
+
+.hero-texto h1 {
+  font-size: 48px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.hero-texto p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.btn-hero {
+  background: #6b7a4a; /* verde musgo */
+  color: #fff;
+  padding: 14px 28px;
+  text-decoration: none;
+  font-weight: 500;
+}   :root {
       --offwhite: #f5f3ef;
       --areia: #e6dfd6;
       --verde: #556f64;
@@ -141,7 +194,20 @@
   </style>
 </head>
 <body>
+<header class="hero">
+  <nav class="menu">
+    <a href="#metodo">Método</a>
+    <a href="#planos">Planos</a>
+    <a href="#depoimentos">Depoimentos</a>
+    <a href="#contato">Contato</a>
+  </nav>
 
+  <div class="hero-texto">
+    <h1>Nutrição com consciência,<br>presença e autonomia</h1>
+    <p>Acompanhamento nutricional com foco em comportamento alimentar e saúde real.</p>
+    <a href="https://wa.me/SEUNUMEROAQUI" class="btn-hero">Agendar consulta</a>
+  </div>
+</header>
   <!-- MENU -->
   <header style="position:fixed; top:0; width:100%; z-index:10; background:rgba(245,243,239,0.85); backdrop-filter: blur(6px);">
     <div class="container" style="display:flex; justify-content:space-between; align-items:center; padding:20px 0;">
